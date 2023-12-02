@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import App from "./1_App/App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LazyBlog } from "./2_pages/blog/Blog.lazy";
+
 const root = document.getElementById("root");
 
 if (!root) {
