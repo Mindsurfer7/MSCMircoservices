@@ -1,9 +1,19 @@
 import { ModuleOptions } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildOptions } from "./types/types";
+import ReactRefreshTypescript from "react-refresh-typescript";
 
 export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   const isDev = options.mode === "development";
+
+  const svgLoader = {
+    test: /\.svg$/,
+    use: [{ loader: "@svgr/webpack", options: { icon: true } }],
+  };
+  const assetLoader = {
+    test: /\.(png|jpg|jpeg|gif)$/i,
+    type: "asset/resource",
+  };
 
   const cssLoaderWithModules = {
     loader: "css-loader",
@@ -27,10 +37,18 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     test: /\.tsx?$/,
     use: {
       loader: "ts-loader",
-      options: { compilerOptions: { noEmit: false } },
+      options: {
+        transpileOnly: true,
+        compilerOptions: { noEmit: false },
+        getCustomTransformers: () => ({
+          before: [isDev && ReactRefreshTypescript()].filter(Boolean),
+        }),
+      },
     },
     exclude: /node_modules/,
   };
 
-  return [scssLoader, tsLoader];
+  //transpileOnly: true отключает проверку типов к тс лоадера.
+
+  return [assetLoader, scssLoader, tsLoader, svgLoader];
 }

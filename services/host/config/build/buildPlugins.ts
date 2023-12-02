@@ -4,6 +4,8 @@ import { Configuration } from "webpack";
 import { BuildOptions } from "./types/types";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export function buildPlugins({
   mode,
@@ -14,12 +16,15 @@ export function buildPlugins({
 
   const plugins: Configuration["plugins"] = [
     new HtmlWebpackPlugin({
-      template: paths.html, //path.resolve(__dirname, "public", "index.html")
+      template: paths.html,
+      favicon: path.resolve(paths.public, "MainLogo.ico"),
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ];
 
   if (isDev) {
     plugins.push(new webpack.ProgressPlugin());
+    plugins.push(new ReactRefreshPlugin());
   }
 
   if (isProd) {

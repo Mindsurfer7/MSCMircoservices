@@ -11,7 +11,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.22.5",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@types/node": "^20.10.1",
     "@types/react": "^18.2.40",
     "@types/react-dom": "^18.2.17",
@@ -21,6 +21,7 @@
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
+    "react-refresh-typescript": "^2.0.9",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
@@ -36,7 +37,10 @@
   "dependencies": {
     "@packages/build-config": "*",
     "@packages/shared": "*",
+    "@svgr/webpack": "^8.1.0",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1"
   }
 }
