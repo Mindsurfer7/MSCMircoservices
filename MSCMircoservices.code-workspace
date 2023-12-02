@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "path": "./"
+    }
+    // {
+    //   "path": "./services/blog"
+    // },
+    // {
+    //   "path": "./services/host"
+    // },
+    // {
+    //   "path": "./packages/build-config"
+    // },
+    // {
+    //   "path": "./packages/shared"
+    // }
+  ],
+  "settings": {}
+}

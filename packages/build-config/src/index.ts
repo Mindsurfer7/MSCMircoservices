@@ -1,3 +1,5 @@
-export { buildWebpackConfig } from "./buildWebpackConfig";
+console.log("hi");
 
-export { BuildEnv } from "./types/config.ts";
+const xex = (num: number) => {
+  return num;
+};

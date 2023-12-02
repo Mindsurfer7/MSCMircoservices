@@ -1,2 +1,7 @@
-/build
 node_modules
+
+/packages/build-config/build
+/packages/shared/build
+/services/host/build
+/services/host/dist
+/services/blog/build

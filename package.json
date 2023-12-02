@@ -4,5 +4,8 @@
   "workspaces": [
     "packages/*",
     "services/*"
-  ]
+  ],
+  "devDependencies": {
+    "ts-loader": "^9.5.1"
+  }
 }
