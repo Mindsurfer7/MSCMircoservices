@@ -1,3 +1,4 @@
-export function X(any: any) {
+function X(any: any) {
   return any;
 }
+export default X;

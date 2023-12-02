@@ -48,7 +48,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     exclude: /node_modules/,
   };
 
-  //transpileOnly: true отключает проверку типов к тс лоадера.
-
   return [assetLoader, scssLoader, tsLoader, svgLoader];
 }
+
+//transpileOnly: true отключает проверку типов к тс лоадера.
