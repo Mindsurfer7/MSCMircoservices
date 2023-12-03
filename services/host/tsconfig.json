@@ -19,8 +19,13 @@
       "@packages/shared/*": ["../../packages/shared/src/*"]
     }
   },
-
-  "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.scss"],
+  "resolveJsonModule": "true",
+  "include": [
+    "src/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.scss"
+    // "src/**/**/*.scss"
+  ],
 
   "ts-node": {
     "compilerOptions": {

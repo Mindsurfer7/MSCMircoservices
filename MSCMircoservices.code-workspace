@@ -3,9 +3,9 @@
     {
       "path": "./"
     },
-    // {
-    //   "path": "./services/blog"
-    // },
+    {
+      "path": "./services/blog"
+    },
     {
       "path": "./services/host"
     }

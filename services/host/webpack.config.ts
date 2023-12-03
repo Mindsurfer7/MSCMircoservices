@@ -3,6 +3,7 @@ import path from "path";
 import webpack from "webpack";
 import { buildWebpack } from "@packages/build-config";
 import { BuildMode, BuildPaths } from "@packages/build-config";
+import PackageJson from "./package.json";
 
 interface EnvVariables {
   mode: BuildMode;
@@ -23,6 +24,8 @@ export default (env: EnvVariables) => {
     mode: env.mode ?? "development",
     paths: paths,
   });
+
+  config.plugins?.push(new webpack.container.ModuleFederationPlugin({}));
 
   return config;
 };
