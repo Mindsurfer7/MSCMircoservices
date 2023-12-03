@@ -6,8 +6,9 @@ import { BuildMode, BuildPaths } from "@packages/build-config";
 import PackageJson from "./package.json";
 
 interface EnvVariables {
-  mode: BuildMode;
-  port: number;
+  mode?: BuildMode;
+  port?: number;
+  BLOG_REMOTE_URL?: string;
 }
 
 export default (env: EnvVariables) => {
@@ -25,7 +26,25 @@ export default (env: EnvVariables) => {
     paths: paths,
   });
 
-  config.plugins?.push(new webpack.container.ModuleFederationPlugin({}));
+  const BLOG_REMOTE_URL = env.BLOG_REMOTE_URL ?? "http://localhost:3000";
+
+  config.plugins?.push(
+    new webpack.container.ModuleFederationPlugin({
+      name: "blog",
+      filename: "remoteEntry.js",
+      remotes: {
+        blog: `blog@${BLOG_REMOTE_URL}/remoteEntry.js`,
+      },
+      shared: {
+        ...PackageJson.dependencies,
+        react: {
+          // Notice shared are NOT eager here.
+          requiredVersion: false,
+          singleton: true,
+        },
+      },
+    })
+  );
 
   return config;
 };
