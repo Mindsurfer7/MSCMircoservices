@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 const NextFederationPlugin = require("@module-federation/nextjs-mf");
-// const packageJson = require("./package.json");
 
 const CLONE_REMOTE_URL = "http://localhost:5000";
 const REACT_REMOTE_URL = "http://localhost:4000";
@@ -17,7 +16,9 @@ const nextConfig = {
           tracker: `tracker@${REACT_REMOTE_URL}/remoteEntry.js`,
         },
         filename: "static/chunks/remoteEntry.js",
-        exposes: {},
+        exposes: {
+          //   "./LinkWrapper": "./components/LinkWrapper.tsx", неудачная попытка экспортировать ЛИНК из НЕКСТ в Реакт
+        },
         shared: {},
       })
     );

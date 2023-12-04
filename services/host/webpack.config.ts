@@ -26,12 +26,15 @@ export default (env: EnvVariables) => {
     paths: paths,
   });
 
-  // const BLOG_REMOTE_URL = env.BLOG_REMOTE_URL ?? "http://localhost:3000";
+  const HOST_REMOTE_URL = "http://localhost:3000";
 
   config.plugins?.push(
     new webpack.container.ModuleFederationPlugin({
       name: "tracker",
       filename: "remoteEntry.js",
+      remotes: {
+        entryhost: `entryhost@${HOST_REMOTE_URL}/_next/static/chunks/remoteEntry.js`,
+      },
       exposes: {
         "./ReactApp": "./src/1_App/App.tsx",
         // "./TrackerComponent": "./src/2_pages/tracker/Tracker.tsx",

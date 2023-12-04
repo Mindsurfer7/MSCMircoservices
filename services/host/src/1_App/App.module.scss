@@ -1,13 +1,28 @@
 .button {
   border: 1px solid purple;
   background-color: rgb(255, 174, 0);
-  padding: 4px;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 5px;
   cursor: pointer;
+
+  transition: transform 0.3s ease-in-out;
+  :active {
+    transform: translateY(5px);
+  }
+  :hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }
 
 .block {
   background-color: sandybrown;
-  color: black;
+  border-radius: 16px;
+  color: white;
+  padding: 20px;
+  // margin: 20px;
+  margin: auto;
 }
 
 .x {

@@ -1,21 +1,12 @@
 import React from "react";
 import cls from "./Page.module.scss";
-
+import LinkWrapper from "../components/LinkWrapper";
 import dynamic from "next/dynamic";
-//@ts-ignore
+//@ts-ignore next app here
 const Clone = dynamic(() => import("clone/clonedArt"), { ssr: false });
 
-// const ReactApp = dynamic(
-//   () =>
-//     //@ts-ignore
-//     import("tracker/TrackerComponent").catch((e) => {
-//       console.log(e);
-
-//       return { default: () => <>Component unavailable!</> };
-//     }),
-//   { ssr: false }
-// );
-const Full = dynamic(
+//react app here
+const ReactApp = dynamic(
   () =>
     //@ts-ignore
     import("tracker/ReactApp").catch((e) => {
@@ -28,17 +19,22 @@ const Full = dynamic(
 
 export default function Articles() {
   return (
-    <div className={cls.main}>
-      Articles page
-      <Clone />
-      react seems to be there
-      {/* <ReactApp /> */}
-      <Full />
+    <div className={cls.x}>
+      <div className={cls.react}>
+        <ReactApp />
+      </div>
+      <div className={cls.clone}>
+        <Clone />
+      </div>
     </div>
   );
 }
 
-// <div className={cls.main}>
-// Articles page
-// <Link href={"/remote"}>Remote</Link>
-// </div>
+// const FC = dynamic(
+//   () =>
+//     import("tracker/TrackerComponent").catch((e) => {
+//       console.log(e);
+//       return { default: () => <>Component unavailable!</> };
+//     }),
+//   { ssr: false }
+// );
