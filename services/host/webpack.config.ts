@@ -26,21 +26,29 @@ export default (env: EnvVariables) => {
     paths: paths,
   });
 
-  const BLOG_REMOTE_URL = env.BLOG_REMOTE_URL ?? "http://localhost:3000";
+  // const BLOG_REMOTE_URL = env.BLOG_REMOTE_URL ?? "http://localhost:3000";
 
   config.plugins?.push(
     new webpack.container.ModuleFederationPlugin({
-      name: "blog",
+      name: "tracker",
       filename: "remoteEntry.js",
-      remotes: {
-        blog: `blog@${BLOG_REMOTE_URL}/remoteEntry.js`,
+      exposes: {
+        "./ReactApp": "./src/1_App/App.tsx",
+        // "./TrackerComponent": "./src/2_pages/tracker/Tracker.tsx",
       },
       shared: {
         ...PackageJson.dependencies,
         react: {
-          // Notice shared are NOT eager here.
-          requiredVersion: false,
-          singleton: true,
+          eager: true,
+          requiredVersion: PackageJson.dependencies["react"],
+        },
+        "react-router-dom": {
+          eager: true,
+          requiredVersion: PackageJson.dependencies["react-router-dom"],
+        },
+        "react-dom": {
+          eager: true,
+          requiredVersion: PackageJson.dependencies["react-dom"],
         },
       },
     })

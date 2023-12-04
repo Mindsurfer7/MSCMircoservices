@@ -8,7 +8,11 @@
     },
     {
       "path": "./services/host"
+    },
+    {
+      "path": "./services/clone"
     }
+
     // {
     //   "path": "./packages/build-config"
     // },

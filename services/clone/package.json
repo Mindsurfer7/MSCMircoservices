@@ -1,10 +1,10 @@
 {
-  "name": "blog",
+  "name": "clone",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
