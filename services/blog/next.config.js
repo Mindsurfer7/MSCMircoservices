@@ -9,15 +9,11 @@ const nextConfig = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.plugins.push(
       new NextFederationPlugin({
-        name: "entryhost",
-        remotes: {
-          clone: `clone@${CLONE_REMOTE_URL}/_next/static/chunks/remoteEntry.js`,
-          tracker: `tracker@${REACT_REMOTE_URL}/remoteEntry.js`,
-          tracker: `tracker@${REACT_REMOTE_URL}/remoteEntry.js`,
-        },
+        name: "next-remote",
+        remotes: {},
         filename: "static/chunks/remoteEntry.js",
         exposes: {
-          //   "./LinkWrapper": "./components/LinkWrapper.tsx", неудачная попытка экспортировать ЛИНК из НЕКСТ в Реакт
+          "./MainPage": "./pages/third.tsx",
         },
         shared: {},
       })

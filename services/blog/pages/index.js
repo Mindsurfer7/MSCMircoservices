@@ -1,7 +1,4 @@
-import Articles from "./articles";
-import LinkWrapper from "../components/LinkWrapper";
 import cls from "./Page.module.scss";
-import { Link } from "next/link";
 
 export default function Home() {
   return (
@@ -27,7 +24,6 @@ export default function Home() {
         React-приложении, интегрированном в Next.js хост-приложение с
         использованием модульной федерации.
       </div>
-      <Articles />
     </div>
   );
 }

@@ -26,34 +26,33 @@ export default (env: EnvVariables) => {
     paths: paths,
   });
 
-  const HOST_REMOTE_URL = "http://localhost:3000";
+  const NEXT_REMOTE_URL = "http://localhost:3000";
+  const CLONE_REMOTE_URL = "http://localhost:5000";
 
   config.plugins?.push(
     new webpack.container.ModuleFederationPlugin({
-      name: "tracker",
+      name: "react-host",
       filename: "remoteEntry.js",
       remotes: {
-        entryhost: `entryhost@${HOST_REMOTE_URL}/_next/static/chunks/remoteEntry.js`,
+        "next-remote": `next-remote@${NEXT_REMOTE_URL}/_next/static/chunks/remoteEntry.js`,
+        clone: `clone@${CLONE_REMOTE_URL}/_next/static/chunks/remoteEntry.js`,
       },
-      exposes: {
-        "./ReactApp": "./src/1_App/App.tsx",
-        // "./TrackerComponent": "./src/2_pages/tracker/Tracker.tsx",
-      },
-      shared: {
-        ...PackageJson.dependencies,
-        react: {
-          eager: true,
-          requiredVersion: PackageJson.dependencies["react"],
-        },
-        "react-router-dom": {
-          eager: true,
-          requiredVersion: PackageJson.dependencies["react-router-dom"],
-        },
-        "react-dom": {
-          eager: true,
-          requiredVersion: PackageJson.dependencies["react-dom"],
-        },
-      },
+      exposes: {},
+      shared: {}, // {
+      //   ...PackageJson.dependencies,
+      //   react: {
+      //     eager: true,
+      //     requiredVersion: PackageJson.dependencies["react"],
+      //   },
+      //   "react-router-dom": {
+      //     eager: true,
+      //     requiredVersion: PackageJson.dependencies["react-router-dom"],
+      //   },
+      //   "react-dom": {
+      //     eager: true,
+      //     requiredVersion: PackageJson.dependencies["react-dom"],
+      //   },
+      // },
     })
   );
 
